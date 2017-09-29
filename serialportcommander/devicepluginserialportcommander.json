@@ -1,0 +1,189 @@
+{
+    "name": "Serial Port Commander",
+    "idName": "serialPortCommander",
+    "id": "2093a52e-36f4-4015-8019-26b659817773",
+    "vendors": [
+        {
+            "name": "Serial Port Commander",
+            "idName": "serialport",
+            "id": "ba5b0f14-e526-46bd-b400-bb1ee3d33d29",
+            "deviceClasses": [
+
+                {
+                    "id": "540566d8-a2a6-4ce2-9a1e-a66a989e6199",
+                    "idName": "serialPortOutput",
+                    "name": "Serial Port Output",
+                    "deviceIcon": "Network",
+                    "createMethods": ["user", "discovery"],
+                    "basicTags": [
+                        "Device"
+                    ],
+                    "paramTypes": [
+                        {
+                            "id": "ed49f7d8-ab18-4c37-9b80-1004b75dcb91",
+                            "idName": "serialPort",
+                            "name": "Serial Port",
+                            "type": "QString",
+                            "inputType": "TextLine",
+                            "defaultValue": "/dev/ttyAMA0",
+                            "index": 0
+                        },
+                        {
+                            "id": "45dfc828-f238-4263-89a3-9b35cf5dea39",
+                            "idName": "baudRate",
+                            "name": "Baud Rate",
+                            "type": "int",
+                            "defaultValue": 9600,
+                            "index": 1
+                        },
+                        {
+                            "id": "add4f7fb-1be9-4944-a420-3355b20174f9",
+                            "idName": "dataBits",
+                            "name": "Data Bits",
+                            "type": "int",
+                            "defaultValue": 8,
+                            "index": 2
+                        },
+                        {
+                            "id": "4ea8bcdf-d4c5-45a4-a54f-f10ac3f08a78",
+                            "idName": "stopBits",
+                            "name": "Stop Bits",
+                            "type": "int",
+                            "defaultValue": 0,
+                            "index": 3
+                        },
+                        {
+                            "id": "7e5d197f-0224-4c6f-8e86-0e7c867da5f1",
+                            "idName": "flowControl",
+                            "name": "Flow Control",
+                            "type": "QString",
+                            "inputType": "TextLine",
+                            "possibleValues:": [
+                                "No Flow Control",
+                                "Hardware Control",
+                                "Software Control",
+                                "Unknown Flow Control"
+                            ],
+                            "defaultValue": "No Flow Control",
+                            "index": 4
+                        },
+                        {
+                            "id": "72de1b08-2a27-49c5-90e0-8788c3ea1da3",
+                            "idName": "parity",
+                            "name": "Parity",
+                            "type": "QString",
+                            "inputType": "TextLine",
+                            "possibleValues:": [
+                                "No Parity",
+                                "Even Parity",
+                                "Odd Parity",
+                                "Space Parity",
+                                "Mark Parity",
+                                "Unknown Parity"
+                            ],
+                            "defaultValue": "No Parity",
+                            "index": 5
+                        }
+                    ],
+                    "actionTypes": [
+                        {
+                            "id": "e6249289-6845-487d-b3ca-636ef41c7f64",
+                            "idName": "outputData",
+                            "name": "Data",
+                            "param": [
+{
+                             "id": "24e15dd9-482d-471e-919a-3409edb64437",
+                            "idName": "outputDataArea",
+                            "name": "Data",
+                            "type": "QString",
+                            "defaultValue": "",
+                            "index": 0
+}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "b4862936-e6a1-4720-b386-7292ca4d0f6d",
+                    "idName": "serialPortInput",
+                    "name": "Serial Port Input",
+                    "deviceIcon": "Network",
+                    "createMethods": ["user", "discovery"],
+                    "basicTags": [
+                        "Device"
+                    ],
+                    "paramTypes": [
+                        {
+                            "id": "ed49f7d8-ab18-4c37-9b80-1004b75dcb91",
+                            "idName": "serialPort",
+                            "name": "Serial Port",
+                            "type": "QString",
+                            "inputType": "TextLine",
+                            "defaultValue": "/dev/ttyAMA0",
+                            "index": 0
+                        },
+                        {
+                            "id": "45dfc828-f238-4263-89a3-9b35cf5dea39",
+                            "idName": "baudRate",
+                            "name": "Baud Rate",
+                            "type": "int",
+                            "defaultValue": 9600,
+                            "index": 1
+                        },
+                        {
+                            "id": "add4f7fb-1be9-4944-a420-3355b20174f9",
+                            "idName": "dataBits",
+                            "name": "Data Bits",
+                            "type": "int",
+                            "defaultValue": 8,
+                            "index": 2
+                        },
+                        {
+                            "id": "4ea8bcdf-d4c5-45a4-a54f-f10ac3f08a78",
+                            "idName": "stopBits",
+                            "name": "Stop Bits",
+                            "type": "int",
+                            "defaultValue": 0,
+                            "index": 3
+                        },
+                        {
+                            "id": "7e5d197f-0224-4c6f-8e86-0e7c867da5f1",
+                            "idName": "flowControl",
+                            "name": "Flow Control",
+                            "type": "QString",
+                            "inputType": "TextLine",
+                            "possibleValues:": [
+                                "No Flow Control",
+                                "Hardware Control",
+                                "Software Control",
+                                "Unknown Flow Control"
+                            ],
+                            "defaultValue": "No Flow Control",
+                            "index": 4
+                        },
+                        {
+                            "id": "72de1b08-2a27-49c5-90e0-8788c3ea1da3",
+                            "idName": "parity",
+                            "name": "Parity",
+                            "type": "QString",
+                            "inputType": "TextLine",
+                            "possibleValues:": [
+                                "No Parity",
+                                "Even Parity",
+                                "Odd Parity",
+                                "Space Parity",
+                                "Mark Parity",
+                                "Unknown Parity"
+                            ],
+                            "defaultValue": "No Parity",
+                            "index": 5
+                        }
+                    ],
+                    "eventTypes": [
+               
+                    ]
+                }
+            ]
+        }
+    ]
+}

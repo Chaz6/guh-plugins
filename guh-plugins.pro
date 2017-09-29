@@ -19,6 +19,7 @@ PLUGIN_DIRS = \
     unitec              \
     leynew              \
     udpcommander        \
+    serialportcommander \
     kodi                \
     elgato              \
     awattar             \
