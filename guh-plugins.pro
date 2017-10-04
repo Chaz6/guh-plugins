@@ -35,6 +35,7 @@ PLUGIN_DIRS = \
     senic               \
     multisensor         \
     gpio                \
+    keba                \
 
 
 CONFIG+=all
