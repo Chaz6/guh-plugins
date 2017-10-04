@@ -520,7 +520,7 @@ Description: guh.io plugin for ws2812
  With the powerful rule engine you are able to connect any device available
  in the system and create individual scenes and behaviors for your environment.
  .
-This package will install the guh.io plugin for ws2812
+ This package will install the guh.io plugin for ws2812
 
 
 Package: guh-plugin-keba
