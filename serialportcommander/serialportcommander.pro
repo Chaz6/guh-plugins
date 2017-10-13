@@ -15,7 +15,9 @@ message("Building $$deviceplugin$${TARGET}.so")
 
 SOURCES += \
     devicepluginserialportcommander.cpp \
+    serialportcommander.cpp
 
 
 HEADERS += \
     devicepluginserialportcommander.h \
+    serialportcommander.h

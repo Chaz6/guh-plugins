@@ -1,7 +1,7 @@
 TEMPLATE = lib
 CONFIG += plugin
 
-QT += network
+QT += network bluetooth
 
 QMAKE_CXXFLAGS += -Werror -std=c++11 -g
 QMAKE_LFLAGS += -std=c++11
@@ -58,3 +58,4 @@ translations.files = $$[QT_SOURCE_TREE]/translations/*.qm
 # Install plugin
 target.path = $$PLUGIN_PATH
 INSTALLS += target translations
+

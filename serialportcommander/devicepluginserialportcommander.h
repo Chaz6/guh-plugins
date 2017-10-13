@@ -18,23 +18,24 @@
  *                                                                         *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef DEVICEPLUGINSERIALPORT_H
-#define DEVICEPLUGINSERIALPORT_H
+#ifndef DEVICEPLUGINSERIALPORTCOMMANDER_H
+#define DEVICEPLUGINSERIALPORTCOMMANDER_H
 
 #include "plugin/deviceplugin.h"
 #include "devicemanager.h"
+#include "serialportcommander.h"
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
-class DevicePluginSerialPort : public DevicePlugin
+class DevicePluginSerialPortCommander : public DevicePlugin
 {
     Q_OBJECT
 
-    Q_PLUGIN_METADATA(IID "guru.guh.DevicePlugin" FILE "devicepluginserialport.json")
+    Q_PLUGIN_METADATA(IID "guru.guh.DevicePlugin" FILE "devicepluginserialportcommander.json")
     Q_INTERFACES(DevicePlugin)
 
 public:
-    explicit DevicePluginSerialPort();
+    explicit DevicePluginSerialPortCommander();
 
     DeviceManager::HardwareResources requiredHardware() const override;
     DeviceManager::DeviceSetupStatus setupDevice(Device *device) override;
@@ -44,14 +45,15 @@ public:
     DeviceManager::DeviceError executeAction(Device *device, const Action &action) override;
 
 private:
-    QList<QSerialPort *> m_serialPorts;
-
+    QHash<Device *, QSerialPort *> m_outputSerialPorts;
+    QHash<Device *, QSerialPort *> m_inputSerialPorts;
+    QHash<QString, SerialPortCommander *> m_serialPortCommanders;
 
 private slots:
+    void onCommandReceived(Device *device);
 
 signals:
 
-
 };
 
-#endif // DEVICEPLUGINSERIALPORT_H
+#endif // DEVICEPLUGINSERIALPORTCOMMANDER_H

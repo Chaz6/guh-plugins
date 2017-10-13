@@ -1,11 +1,11 @@
 {
     "name": "Serial Port Commander",
-    "idName": "serialPortCommander",
-    "id": "2093a52e-36f4-4015-8019-26b659817773",
+    "idName": "SerialPortCommander",
+    "id": "fe93a12e-36f4-4015-8019-26b659817773",
     "vendors": [
         {
             "name": "Serial Port Commander",
-            "idName": "serialport",
+            "idName": "serialPortCommander",
             "id": "ba5b0f14-e526-46bd-b400-bb1ee3d33d29",
             "deviceClasses": [
 
@@ -87,18 +87,17 @@
                     ],
                     "actionTypes": [
                         {
-                            "id": "e6249289-6845-487d-b3ca-636ef41c7f64",
+                            "id": "0b22c4d1-f5f6-4a93-aa93-660d27bf8f71",
                             "idName": "outputData",
                             "name": "Data",
-                            "param": [
-{
-                             "id": "24e15dd9-482d-471e-919a-3409edb64437",
-                            "idName": "outputDataArea",
-                            "name": "Data",
-                            "type": "QString",
-                            "defaultValue": "",
-                            "index": 0
-}
+                            "paramTypes": [
+                                {
+                                    "id": "a27ecedc-424e-49ce-8956-9dbca2feac02",
+                                    "idName": "outputDataArea",
+                                    "name": "Data",
+                                    "type": "QString",
+                                    "inputType": "TextArea"
+                                }
                             ]
                         }
                     ]
@@ -162,7 +161,7 @@
                             "index": 4
                         },
                         {
-                            "id": "72de1b08-2a27-49c5-90e0-8788c3ea1da3",
+                            "id": "71de1b08-2a27-49c5-90e0-8788c3ea1da3",
                             "idName": "parity",
                             "name": "Parity",
                             "type": "QString",
@@ -179,9 +178,9 @@
                             "index": 5
                         },
                         {
-                            "id": "d99f55c7-0e14-45ee-b0f0-33f2d1d2e674",
-                            "idName": "comparision",
-                            "name": "Data Comparison",
+                            "id": "e99f55c7-0e14-45ee-b0f0-33f1d1d2e674",
+                            "idName": "comparisonType",
+                            "name": "Comparison Type",
                             "type": "QString",
                             "allowedValues": [
                                 "Is exactly",
@@ -194,8 +193,8 @@
                             "index" : 6
                         },
                         {
-                            "id": "23051bdf-3f50-41fa-abde-bc4fe0bcc4fc",
-                            "idName": "data",
+                            "id": "13051bdf-3f50-41fa-abde-bc4fe0bcc4fc",
+                            "idName": "inputCommand",
                             "name": "Data",
                             "type": "QString",
                             "inputType": "TextArea",
@@ -215,17 +214,17 @@
                         },
                         {
                             "id": "b98fdacc-59d7-41c4-b790-1fdca50dfb22",
-                            "idName": "response",
-                            "name": "Response",
+                            "idName": "inputData",
+                            "name": "Received Data",
                             "type": "QString",
                             "inputType": "TextArea",
                             "defaultValue": "",
-                            "eventTypeName": "response received",
+                            "eventTypeName": "received data changed",
                             "index" : 1
-                        } 
+                        }
                     ],
                     "eventTypes": [
-               		{
+                        {
                             "id": "6d7c6df6-cb61-4d9e-b0d7-37c43911ca4b",
                             "idName": "commandReceived",
                             "name": "Command Received",
