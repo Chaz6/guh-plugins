@@ -17,14 +17,11 @@
                     "basicTags": [
                         "Service"
                     ],
-                    "criticalStateTypeId": "725b541a-9e0c-4634-81eb-e415c0b8f025",
-                    "primaryStateTypeId": "725b541a-9e0c-4634-81eb-e415c0b8f025",
-                    "primaryActionTypeId": "5a97c116-b334-411b-adba-226496bbe83d",
                     "paramTypes": [
                         {
                             "id": "2a3fcb23-931b-4ba1-b134-c49b656c76f7",
                             "idName": "ipv4address",
-                            "name": "IPv4 Address",
+                            "name": "ipv4 address",
                             "type": "QString",
                             "inputType": "IPv4Address",
                             "defaultValue": "127.0.0.1"
@@ -32,21 +29,21 @@
                         {
                             "id": "bee8b151-815a-4159-9d8a-42b76e99b42c",
                             "idName": "port",
-                            "name": "Port",
+                            "name": "port",
                             "type": "int",
                             "defaultValue": 502
                         },
                         {
                             "id": "2bd0910c-07b3-46bf-b66c-7c513d9ef954",
                             "idName": "slaveAddress",
-                            "name": "Slave Address",
+                            "name": "slave address",
                             "type": "int",
                             "defaultValue": 180
                         },
                         {
                             "id": "9d40c4ce-d251-43bb-a55e-a8780567bbac",
                             "idName": "registerAddress",
-                            "name": "Register Address",
+                            "name": "register address",
                             "type": "int",
                             "defaultValue": 100
                         },
@@ -56,40 +53,37 @@
                             "name": "Register Type",
                             "type": "QString",
                             "possibleValues": [
-                                "Coil",
-                                "Register"
+                                "coil",
+                                "register"
                             ],
-                            "defaultValue": "Coil"
+                            "defaultValue": "coil"
                         }
                     ],
                     "stateTypes": [
                         {
-                            "id": "725b541a-9e0c-4634-81eb-e415c0b8f025",
+                            "id": "725b541a-9e0c-4634-81eb-e415c0b8f012",
                             "idName": "connected",
-                            "name": "Connected",
+                            "name": "connected",
                             "type": "bool",
                             "defaultValue": false,
-                            "eventTypeName": "connection status changed",
-                            "index" : 0
-                        },
-                        {
-                            "id": "23051bdf-3f50-41fa-abde-bc4fe0bcc4fc",
-                            "idName": "data",
-                            "name": "Data",
-                            "type": "int",
-                            "defaultValue": 0,
-                            "eventTypeName": "Data Changed",
-                            "actionTypeName": "Change Data",
-                            "index" : 1,
-                            "writable": true
+                            "eventTypeName": "connection status changed"
                         }
                     ],
                     "actionTypes": [
                         {
-                            "id": "5a97c116-b334-411b-adba-226496bbe83d",
-                            "idName": "modbusButton",
-                            "name": "Send",
-                            "index" : 0
+                            "id": "23051bdf-3f50-41fa-abde-bc4fe0bcc4fc",
+                            "idName": "writeData",
+                            "name": "data",
+                            "paramTypes": [
+                                {
+                                    "id": "1cd4cd53-3043-4ed9-9ba8-62985000c599",
+                                    "idName": "data",
+                                    "name": "write data",
+                                    "type": "int",
+                                    "eventTypeName": "data written",
+                                    "defaultValue": 0
+                                }
+                            ]
                         }
                     ]
                 },
@@ -100,15 +94,13 @@
                     "deviceIcon": "Network",
                     "createMethods": ["user"],
                     "basicTags": [
-                        "Device"
+                        "Service"
                     ],
-                    "criticalStateTypeId": "725b541a-9e0c-4634-81eb-e415c0b8f025",
-                    "primaryStateTypeId": "725b541a-9e0c-4634-81eb-e415c0b8f025",
                     "paramTypes": [
                         {
                             "id": "2a3fcb23-931b-4ba1-b134-c49b656c76f7",
                             "idName": "ipv4address",
-                            "name": "IPv4 Address",
+                            "name": "ipv4 address",
                             "type": "QString",
                             "inputType": "IPv4Address",
                             "defaultValue": "127.0.0.1"
@@ -116,41 +108,41 @@
                         {
                             "id": "bee8b151-815a-4159-9d8a-42b76e99b42c",
                             "idName": "port",
-                            "name": "Port",
+                            "name": "port",
                             "type": "int",
                             "defaultValue": 502
                         },
                         {
                             "id": "2bd0910c-07b3-46bf-b66c-7c513d9ef954",
                             "idName": "slaveAddress",
-                            "name": "Slave Address",
+                            "name": "slave address",
                             "type": "int",
                             "defaultValue": 180
                         },
                         {
                             "id": "9d40c4ce-d251-43bb-a55e-a8780567bbac",
                             "idName": "registerAddress",
-                            "name": "Register Address",
+                            "name": "register address",
                             "type": "int",
                             "defaultValue": 100
                         },
                         {
                             "id": "4825b103-edaa-460b-8183-820008c4d73c",
                             "idName": "registerType",
-                            "name": "Register Type",
+                            "name": "register type",
                             "type": "QString",
                             "possibleValues": [
-                                "Coil",
-                                "Register"
+                                "coil",
+                                "register"
                             ],
-                            "defaultValue": "Coil"
+                            "defaultValue": "coil"
                         }
                     ],
                     "stateTypes": [
                         {
                             "id": "725b541a-9e0c-4634-81eb-e415c0b8f025",
                             "idName": "connected",
-                            "name": "Connected",
+                            "name": "connected",
                             "type": "bool",
                             "defaultValue": false,
                             "eventTypeName": "connection status changed"
@@ -158,10 +150,10 @@
                         {
                             "id": "c772bd7f-6e51-4b28-b182-3b979c1298ce",
                             "idName": "readData",
-                            "name": "Data",
+                            "name": "data",
                             "type": "int",
                             "defaultValue": 0,
-                            "eventTypeName": "Data Received"
+                            "eventTypeName": "data received"
                         }
                     ]
                 }

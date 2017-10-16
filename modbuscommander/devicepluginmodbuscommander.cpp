@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *                                                                         *
- *  Copyright (C) 2015 Simon Stuerz <simon.stuerz@guh.guru>                *
+ *  Copyright (C) 2017 Bernhard Trinnes <bernhard.trinnes@guh.io           *
  *                                                                         *
  *  This file is part of guh.                                              *
  *                                                                         *
@@ -32,11 +32,14 @@ DeviceManager::HardwareResources DevicePluginModbusCommander::requiredHardware()
 }
 
 
-DeviceManager::DeviceSetupStatus DevicePluginModbus::setupDevice(Device *device)
+DeviceManager::DeviceSetupStatus DevicePluginModbusCommander::setupDevice(Device *device)
 {
-    if ((device->deviceClassId() == modbusTCPOutputDeviceClassId) || (device->deviceClassId() == modbusTCPInputDeviceClassId))  {
-        ModbusTCPClient *modbus = new ModbusTCPClient(QHostAddress(device->paramValue(ipv4addressParamTypeId).toString()),
-                                                      device->paramValue(slaveAddressParamTypeId).toInt(), device->paramValue(portParamTypeId).toInt(), this);
+    if ((device->deviceClassId() == modbusTCPWriteDeviceClassId) || (device->deviceClassId() == modbusTCPReadDeviceClassId))  {
+
+        QHostAddress ipAddress = QHostAddress(device->paramValue(ipv4addressParamTypeId).toString());
+        int slaveAddress = device->paramValue(slaveAddressParamTypeId).toInt();
+        int port = device->paramValue(portParamTypeId).toInt();
+        ModbusTCPClient *modbus = new ModbusTCPClient(ipAddress, slaveAddress, port, this);
         if (!modbus->valid()) {
             qWarning(dcModbusCommander()) << "Could not create Modbus connection";
             return DeviceManager::DeviceSetupStatusFailure;
@@ -48,32 +51,27 @@ DeviceManager::DeviceSetupStatus DevicePluginModbus::setupDevice(Device *device)
     return DeviceManager::DeviceSetupStatusFailure;
 }
 
-void DevicePluginModbusCommander::postSetupDevice(Device *device)
-{
-    if ((device->deviceClassId() == modbusTCPOutputDeviceClassId) ||(device->deviceClassId() == modbusTCPInputDeviceClassId)){
-
-    }
-
-}
 
 DeviceManager::DeviceError DevicePluginModbusCommander::executeAction(Device *device, const Action &action)
 {
-    if (device->deviceClassId() == modbusTCPOutputDeviceClassId) {
-        if (action.actionTypeId() == modbusButtonActionTypeId) {
+    if (device->deviceClassId() == modbusTCPWriteDeviceClassId) {
+
+        if (action.actionTypeId() == writeDataActionTypeId) {
 
             ModbusTCPClient *modbus = m_modbusSockets.key(device);
-            int data = device->stateValue(dataStateTypeId).toInt();
             int address = device->paramValue(registerAddressParamTypeId).toInt();
-            modbus->setRegister(address, data);
-            return DeviceManager::DeviceErrorNoError;
-        } else if (action.actionTypeId() == dataActionTypeId) {
 
-            int data = action.param(dataStateParamTypeId).value().toInt();
-            device->setStateValue(dataStateTypeId, data);
+            if (device->paramValue(registerTypeParamTypeId).toString() == "coil") {
+                bool data = action.param(dataParamTypeId).value().toBool();
+                modbus->setCoil(address, data);
+
+            } else if (device->paramValue(registerTypeParamTypeId).toString() == "register") {
+                int data = action.param(dataParamTypeId).value().toInt();
+                modbus->setRegister(address, data);
+            }
             return DeviceManager::DeviceErrorNoError;
         }
         return DeviceManager::DeviceErrorActionTypeNotFound;
-
     }
     return DeviceManager::DeviceErrorDeviceClassNotFound;
 }
@@ -81,20 +79,25 @@ DeviceManager::DeviceError DevicePluginModbusCommander::executeAction(Device *de
 
 void DevicePluginModbusCommander::deviceRemoved(Device *device)
 {
-    if ((device->deviceClassId() == modbusTCPOutputDeviceClassId)|| (device->deviceClassId() == modbusTCPInputDeviceClassId)) {
+    if ((device->deviceClassId() == modbusTCPWriteDeviceClassId)|| (device->deviceClassId() == modbusTCPReadDeviceClassId)) {
         ModbusTCPClient *modbus = m_modbusSockets.key(device);
         m_modbusSockets.remove(m_modbusSockets.key(device));
         modbus->deleteLater();
     }
 }
+
 void DevicePluginModbusCommander::guhTimer()
 {
-    //foreach modbus device check connection status
-    //foreach (Device *device, m_httpRequests) {
-    //    QNetworkReply *reply = m_httpRequests.key(device);;
-    //    networkManagerGet(reply->request());
-    //}
+    foreach (Device *device, myDevices()) {
+        if (device->deviceClassId() == modbusTCPReadDeviceClassId) {
+            ModbusTCPClient *modbus = m_modbusSockets.key(device);
+            int reg = device->paramValue(registerAddressParamTypeId).toInt();
 
+            if (device->paramValue(registerTypeParamTypeId) == "coil"){
+                modbus->getCoil(reg);
+            } else if (device->paramValue(registerTypeParamTypeId) == "register") {
+                modbus->getRegister(reg);
+            }
+        }
+    }
 }
-
-

@@ -11,11 +11,9 @@ QT += serialport
 LIBS += -lmodbus
 
 SOURCES += \
-    devicepluginmodbuscommander.cpp \
-    modbusrtuclient.cpp \
+    devicepluginmodbuscommander.cpp \ 
     modbustcpclient.cpp
 
 HEADERS += \
     devicepluginmodbuscommander.h \
-    modbusrtuclient.h \
     modbustcpclient.h

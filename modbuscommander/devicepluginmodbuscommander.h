@@ -18,10 +18,9 @@
  *                                                                         *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef DEVICEPLUGINMODBUS_H
-#define DEVICEPLUGINMODBUS_H
+#ifndef DEVICEPLUGINMODBUSCOMMANDER_H
+#define DEVICEPLUGINMODBUSCOMMANDER_H
 
-#include <QtWebSockets/QWebSocket>
 #include "plugin/deviceplugin.h"
 #include "devicemanager.h"
 #include "modbustcpclient.h"
@@ -30,7 +29,7 @@ class DevicePluginModbusCommander : public DevicePlugin
 {
     Q_OBJECT
 
-    Q_PLUGIN_METADATA(IID "guru.guh.DevicePlugin" FILE "devicepluginmodbus.json")
+    Q_PLUGIN_METADATA(IID "guru.guh.DevicePlugin" FILE "devicepluginmodbuscommander.json")
     Q_INTERFACES(DevicePlugin)
 
 public:
@@ -38,10 +37,8 @@ public:
 
     DeviceManager::HardwareResources requiredHardware() const override;
     DeviceManager::DeviceSetupStatus setupDevice(Device *device) override;
-    void postSetupDevice(Device * device) override;
     void deviceRemoved(Device *device) override;
     void guhTimer() override;
- 
     DeviceManager::DeviceError executeAction(Device *device, const Action &action) override;
 
 private:
@@ -54,4 +51,4 @@ signals:
 
 };
 
-#endif // DEVICEPLUGINMODBUS_H
+#endif // DEVICEPLUGINMODBUSCOMMANDER_H
