@@ -52,7 +52,7 @@
                             "idName": "registerType",
                             "name": "Register Type",
                             "type": "QString",
-                            "possibleValues": [
+                            "allowedValues": [
                                 "coil",
                                 "register"
                             ],
@@ -131,7 +131,7 @@
                             "idName": "registerType",
                             "name": "register type",
                             "type": "QString",
-                            "possibleValues": [
+                            "allowedValues": [
                                 "coil",
                                 "register"
                             ],
@@ -140,7 +140,7 @@
                     ],
                     "stateTypes": [
                         {
-                            "id": "725b541a-9e0c-4634-81eb-e415c0b8f025",
+                            "id": "725b541a-9e0c-4634-81eb-e415c0b8f012",
                             "idName": "connected",
                             "name": "connected",
                             "type": "bool",

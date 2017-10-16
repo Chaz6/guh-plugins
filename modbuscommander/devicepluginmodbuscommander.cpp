@@ -39,16 +39,31 @@ DeviceManager::DeviceSetupStatus DevicePluginModbusCommander::setupDevice(Device
         QHostAddress ipAddress = QHostAddress(device->paramValue(ipv4addressParamTypeId).toString());
         int slaveAddress = device->paramValue(slaveAddressParamTypeId).toInt();
         int port = device->paramValue(portParamTypeId).toInt();
-        ModbusTCPClient *modbus = new ModbusTCPClient(ipAddress, slaveAddress, port, this);
-        if (!modbus->valid()) {
-            qWarning(dcModbusCommander()) << "Could not create Modbus connection";
-            return DeviceManager::DeviceSetupStatusFailure;
-        }
+        ModbusTCPClient *modbus = new ModbusTCPClient(ipAddress, port, slaveAddress, this);
         m_modbusSockets.insert(modbus, device);
-        device->setStateValue(connectedStateTypeId, true);
         return DeviceManager::DeviceSetupStatusSuccess;
     }
     return DeviceManager::DeviceSetupStatusFailure;
+}
+
+
+void DevicePluginModbusCommander::postSetupDevice(Device *device)
+{
+    if (device->deviceClassId() == modbusTCPReadDeviceClassId) {
+        ModbusTCPClient *modbus = m_modbusSockets.key(device);
+        int reg = device->paramValue(registerAddressParamTypeId).toInt();
+
+        if (device->paramValue(registerTypeParamTypeId) == "coil"){
+            bool data = modbus->getCoil(reg);
+            device->setStateValue(readDataStateTypeId, data);
+        } else if (device->paramValue(registerTypeParamTypeId) == "register") {
+            int data = modbus->getRegister(reg);
+            device->setStateValue(readDataStateTypeId, data);
+        }
+        device->setStateValue(connectedStateTypeId, true);
+    } else if (device->deviceClassId() == modbusTCPWriteDeviceClassId) {
+        device->setStateValue(connectedStateTypeId, true);
+    }
 }
 
 
@@ -94,9 +109,11 @@ void DevicePluginModbusCommander::guhTimer()
             int reg = device->paramValue(registerAddressParamTypeId).toInt();
 
             if (device->paramValue(registerTypeParamTypeId) == "coil"){
-                modbus->getCoil(reg);
+                bool data = modbus->getCoil(reg);
+                device->setStateValue(readDataStateTypeId, data);
             } else if (device->paramValue(registerTypeParamTypeId) == "register") {
-                modbus->getRegister(reg);
+                int data = modbus->getRegister(reg);
+                device->setStateValue(readDataStateTypeId, data);
             }
         }
     }

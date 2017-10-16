@@ -17,8 +17,7 @@ public:
     void setCoil(int coilAddress, bool status);
     void setRegister(int registerAddress, int data);
 
-    bool valid();
-    void reconnect();
+    void reconnect(int address);
 private:
      modbus_t *m_mb;
      QHostAddress m_IPv4Address;
