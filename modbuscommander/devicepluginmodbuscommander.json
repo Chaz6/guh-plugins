@@ -1,0 +1,171 @@
+{
+    "name": "Modbus Commander",
+    "idName": "ModbusCommander",
+    "id": "7dda1b6d-c37e-4c9f-a696-1666f9de66e6",
+    "vendors": [
+        {
+            "name": "Modbus Commander",
+            "idName": "modbusCommander",
+            "id": "0be85895-d764-4b89-9b26-ad65945344fe",
+            "deviceClasses": [
+                {
+                    "id": "f53524ea-1d06-40a9-b7a4-041297b21e84",
+                    "idName": "modbusTCPWrite",
+                    "name": "Modbus TCP Write",
+                    "deviceIcon": "Network",
+                    "createMethods": ["user"],
+                    "basicTags": [
+                        "Service"
+                    ],
+                    "criticalStateTypeId": "725b541a-9e0c-4634-81eb-e415c0b8f025",
+                    "primaryStateTypeId": "725b541a-9e0c-4634-81eb-e415c0b8f025",
+                    "primaryActionTypeId": "5a97c116-b334-411b-adba-226496bbe83d",
+                    "paramTypes": [
+                        {
+                            "id": "2a3fcb23-931b-4ba1-b134-c49b656c76f7",
+                            "idName": "ipv4address",
+                            "name": "IPv4 Address",
+                            "type": "QString",
+                            "inputType": "IPv4Address",
+                            "defaultValue": "127.0.0.1"
+                        },
+                        {
+                            "id": "bee8b151-815a-4159-9d8a-42b76e99b42c",
+                            "idName": "port",
+                            "name": "Port",
+                            "type": "int",
+                            "defaultValue": 502
+                        },
+                        {
+                            "id": "2bd0910c-07b3-46bf-b66c-7c513d9ef954",
+                            "idName": "slaveAddress",
+                            "name": "Slave Address",
+                            "type": "int",
+                            "defaultValue": 180
+                        },
+                        {
+                            "id": "9d40c4ce-d251-43bb-a55e-a8780567bbac",
+                            "idName": "registerAddress",
+                            "name": "Register Address",
+                            "type": "int",
+                            "defaultValue": 100
+                        },
+                        {
+                            "id": "4825b103-edaa-460b-8183-820008c4d73c",
+                            "idName": "registerType",
+                            "name": "Register Type",
+                            "type": "QString",
+                            "possibleValues": [
+                                "Coil",
+                                "Register"
+                            ],
+                            "defaultValue": "Coil"
+                        }
+                    ],
+                    "stateTypes": [
+                        {
+                            "id": "725b541a-9e0c-4634-81eb-e415c0b8f025",
+                            "idName": "connected",
+                            "name": "Connected",
+                            "type": "bool",
+                            "defaultValue": false,
+                            "eventTypeName": "connection status changed",
+                            "index" : 0
+                        },
+                        {
+                            "id": "23051bdf-3f50-41fa-abde-bc4fe0bcc4fc",
+                            "idName": "data",
+                            "name": "Data",
+                            "type": "int",
+                            "defaultValue": 0,
+                            "eventTypeName": "Data Changed",
+                            "actionTypeName": "Change Data",
+                            "index" : 1,
+                            "writable": true
+                        }
+                    ],
+                    "actionTypes": [
+                        {
+                            "id": "5a97c116-b334-411b-adba-226496bbe83d",
+                            "idName": "modbusButton",
+                            "name": "Send",
+                            "index" : 0
+                        }
+                    ]
+                },
+                {
+                    "id": "d7a15b39-48d3-4591-bdad-ec5e799aa6e5",
+                    "idName": "modbusTCPRead",
+                    "name": "Modbus TCP Read",
+                    "deviceIcon": "Network",
+                    "createMethods": ["user"],
+                    "basicTags": [
+                        "Device"
+                    ],
+                    "criticalStateTypeId": "725b541a-9e0c-4634-81eb-e415c0b8f025",
+                    "primaryStateTypeId": "725b541a-9e0c-4634-81eb-e415c0b8f025",
+                    "paramTypes": [
+                        {
+                            "id": "2a3fcb23-931b-4ba1-b134-c49b656c76f7",
+                            "idName": "ipv4address",
+                            "name": "IPv4 Address",
+                            "type": "QString",
+                            "inputType": "IPv4Address",
+                            "defaultValue": "127.0.0.1"
+                        },
+                        {
+                            "id": "bee8b151-815a-4159-9d8a-42b76e99b42c",
+                            "idName": "port",
+                            "name": "Port",
+                            "type": "int",
+                            "defaultValue": 502
+                        },
+                        {
+                            "id": "2bd0910c-07b3-46bf-b66c-7c513d9ef954",
+                            "idName": "slaveAddress",
+                            "name": "Slave Address",
+                            "type": "int",
+                            "defaultValue": 180
+                        },
+                        {
+                            "id": "9d40c4ce-d251-43bb-a55e-a8780567bbac",
+                            "idName": "registerAddress",
+                            "name": "Register Address",
+                            "type": "int",
+                            "defaultValue": 100
+                        },
+                        {
+                            "id": "4825b103-edaa-460b-8183-820008c4d73c",
+                            "idName": "registerType",
+                            "name": "Register Type",
+                            "type": "QString",
+                            "possibleValues": [
+                                "Coil",
+                                "Register"
+                            ],
+                            "defaultValue": "Coil"
+                        }
+                    ],
+                    "stateTypes": [
+                        {
+                            "id": "725b541a-9e0c-4634-81eb-e415c0b8f025",
+                            "idName": "connected",
+                            "name": "Connected",
+                            "type": "bool",
+                            "defaultValue": false,
+                            "eventTypeName": "connection status changed"
+                        },
+                        {
+                            "id": "c772bd7f-6e51-4b28-b182-3b979c1298ce",
+                            "idName": "readData",
+                            "name": "Data",
+                            "type": "int",
+                            "defaultValue": 0,
+                            "eventTypeName": "Data Received"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
