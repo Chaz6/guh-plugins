@@ -20,6 +20,7 @@ PLUGIN_DIRS = \
     leynew              \
     udpcommander        \
     tcpcommander        \
+    dalicommander       \
     kodi                \
     elgato              \
     awattar             \

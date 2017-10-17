@@ -1,0 +1,146 @@
+{
+    "name": "dali commander",
+    "idName": "DaliCommander",
+    "id": "91710bd1-93c1-4491-9ac6-cc6bee4d1c20",
+    "vendors": [
+        {
+            "name": "dali commander",
+            "idName": "daliCommander",
+            "id": "49f5a37b-7541-46dd-be48-3ebdf1446f19",
+            "deviceClasses": [
+                {
+                    "id": "c67d059f-694f-47cb-8e1d-9e3e6d014c1a",
+                    "idName": "daliOutput",
+                    "name": "Dali Output",
+                    "deviceIcon": "Network",
+                    "createMethods": ["user"],
+                    "basicTags": [
+                        "Service"
+                    ],
+                    "paramTypes": [
+                        {
+                            "id": "11a63f9d-bab4-4d4e-887d-453abaafee6a",
+                            "idName": "address",
+                            "name": "address",
+                            "type": "int",
+                            "defaultValue": 1
+                        },
+                        {
+                            "id": "a3910936-1059-404d-947c-4d426806f915",
+                            "idName": "addressType",
+                            "name": "address type",
+                            "type": "QString",
+                            "allowedValues": [
+                                "short",
+                                "group",
+                                "broadcast",
+                                "special"
+                            ],
+                            "defaultValue": "short"
+                        },
+                        {
+                            "id": "53a84c94-23f9-49f1-b259-d9763db8810c",
+                            "idName": "requestType",
+                            "name": "address type",
+                            "type": "QString",
+                            "allowedValues": [
+                                "command",
+                                "parameter"
+                            ],
+                            "defaultValue": "command"
+                        }
+                    ],
+                    "stateTypes":[
+                        {
+                            "id": "725b541a-9e0c-4634-81eb-e415c0b8f025",
+                            "idName": "connected",
+                            "name": "usb dongle connected",
+                            "type": "bool",
+                            "defaultValue": false,
+                            "eventTypeName": "connection status changed"
+                        },
+                        {
+                            "id": "9f76b0cb-3a76-4ba3-9075-b6e11f11e1d8",
+                            "idName": "response",
+                            "name": "response",
+                            "type": "int",
+                            "defaultValue": 0,
+                            "eventTypeName": "response received"
+                        }
+                    ],
+                    "actionTypes": [
+                        {
+                            "id": "6bc52462-b192-46a4-a6df-92cc5a479c89",
+                            "idName": "outputData",
+                            "name": "Send Data",
+                            "paramTypes": [
+                                {
+                                    "id": "6604c852-6b24-4707-b8e5-1ddd8032efcc",
+                                    "idName": "outputDataArea",
+                                    "name": "Data",
+                                    "type": "QString",
+                                    "inputType": "TextArea"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+
+                    "id": "e18e19ab-3605-48cc-a145-770360fb3c57",
+                    "idName": "daliInput",
+                    "name": "Dali Input",
+                    "deviceIcon": "Network",
+                    "createMethods": ["user"],
+                    "basicTags": [
+                        "Service"
+                    ],
+                    "paramTypes": [
+                    ],
+                    "stateTypes":[
+                        {
+                            "id": "725b541a-9e0c-4634-81eb-e415c0b8f025",
+                            "idName": "connected",
+                            "name": "usb dongle connected",
+                            "type": "bool",
+                            "defaultValue": false,
+                            "eventTypeName": "connection status changed"
+                        },
+                        {
+                            "id": "384a8204-bc86-4ad7-8796-88f1a9568778",
+                            "idName": "inputData",
+                            "name": "input data",
+                            "type": "int",
+                            "defaultValue": 0,
+                            "eventTypeName": "response received"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "paramTypes": [
+        {
+            "id": "47ecd01a-1b2a-4c06-a2fc-2023944520c9",
+            "idName": "ipv4address",
+            "name": "ipv4 address",
+            "type": "QString",
+            "inputType": "IPv4Address",
+            "defaultValue": "127.0.0.1"
+        },
+        {
+            "id": "78b0b783-0e6c-4d84-a047-9d9336955665",
+            "idName": "port",
+            "name": "port",
+            "type": "int",
+            "defaultValue": "55825"
+        },
+        {
+            "id": "308ecff5-69cc-4ca0-8021-c86bfeccd4a0",
+            "idName": "protocolVersion",
+            "name": "protocol version",
+            "type": "int",
+            "defaultValue": "2"
+        }
+    ]
+}
