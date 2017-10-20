@@ -1,17 +1,17 @@
 {
-    "name": "Elgato",
+    "displayName": "Elgato",
     "id": "c5c03ad4-bfdb-444a-8eca-2c234c46cc27",
-    "idName": "Elgato",
+    "name": "Elgato",
     "vendors": [
         {
-            "name": "Elgato",
-            "idName": "elgato",
+            "displayName": "Elgato",
+            "name": "elgato",
             "id": "90a3091d-1053-4f77-8dc3-92e27bbcebe7",
             "deviceClasses": [
                 {
                     "id": "164f9602-90ee-4693-bda3-9cafae37603e",
-                    "idName": "avea",
-                    "name": "Avea",
+                    "name": "avea",
+                    "displayName": "Avea",
                     "deviceIcon": "LightBulb",
                     "criticalStateTypeId": "6d5e792a-c786-40d2-ae35-a48ac6fafcbc",
                     "basicTags": [
@@ -23,15 +23,15 @@
                     "paramTypes": [
                         {
                             "id": "d7a5d96f-33dc-4dc3-a171-b1e89a5e1a4b",
-                            "idName": "name",
                             "name": "name",
+                            "displayName": "name",
                             "type": "QString",
                             "inputType": "TextLine"
                         },
                         {
                             "id": "20932e39-00fd-40e3-8f39-850ba149844e",
-                            "idName": "macAddress",
-                            "name": "mac address",
+                            "name": "macAddress",
+                            "displayName": "mac address",
                             "type": "QString",
                             "inputType": "MacAddress"
                         }
@@ -39,18 +39,18 @@
                     "stateTypes": [
                         {
                             "id": "6d5e792a-c786-40d2-ae35-a48ac6fafcbc",
-                            "idName": "available",
                             "name": "available",
-                            "eventTypeName": "available changed",
+                            "displayName": "available",
+                            "displayNameEvent": "available changed",
                             "type": "bool",
                             "defaultValue": false
                         },
                         {
                             "id": "c38181a0-e19b-423f-8b66-dedda94e89b5",
-                            "idName": "brightness",
                             "name": "brightness",
-                            "eventTypeName": "brightness changed",
-                            "actionTypeName": "Set brightness",
+                            "displayName": "brightness",
+                            "displayNameEvent": "brightness changed",
+                            "displayNameAction": "Set brightness",
                             "type": "int",
                             "defaultValue": 100,
                             "ruleRelevant": false,
@@ -61,10 +61,10 @@
                         },
                         {
                             "id": "2073b44b-2f99-4abf-8d9f-6b33be8e1763",
-                            "idName": "liveliness",
                             "name": "liveliness",
-                            "eventTypeName": "liveliness changed",
-                            "actionTypeName": "Set liveliness",
+                            "displayName": "liveliness",
+                            "displayNameEvent": "liveliness changed",
+                            "displayNameAction": "Set liveliness",
                             "type": "int",
                             "defaultValue": 100,
                             "ruleRelevant": false,
@@ -77,28 +77,28 @@
                     "actionTypes": [
                         {
                             "id": "30b6334d-37cd-4b94-a397-3b9b642c762e",
-                            "idName": "connect",
-                            "name": "connect"
+                            "name": "connect",
+                            "displayName": "connect"
                         },
                         {
                             "id": "1daa8def-85d7-44fb-b0bd-77a4301056e5",
-                            "idName": "disconnect",
-                            "name": "disconnect"
+                            "name": "disconnect",
+                            "displayName": "disconnect"
                         },
                         {
                             "id": "b2f39b7b-dd11-4db4-a82b-dd3d4b973bd5",
-                            "idName": "powerOff",
-                            "name": "power off"
+                            "name": "powerOff",
+                            "displayName": "power off"
                         },
                         {
                             "id": "7936bd51-7ea3-4df4-9998-7325de85b677",
-                            "idName": "color",
-                            "name": "set color",
+                            "name": "color",
+                            "displayName": "set color",
                             "paramTypes": [
                                 {
                                     "id": "f5f02666-576d-4dee-afa3-f38e1b24f469",
-                                    "idName": "color",
                                     "name": "color",
+                                    "displayName": "color",
                                     "type": "QString",
                                     "allowedValues": [
                                         "green",
@@ -114,13 +114,13 @@
                         },
                         {
                             "id": "dfbc86e8-3891-4782-ae14-05228e70423e",
-                            "idName": "mood",
-                            "name": "set mood",
+                            "name": "mood",
+                            "displayName": "set mood",
                             "paramTypes": [
                                 {
                                     "id": "c5d42d41-f25c-4d15-aed1-b67071847246",
-                                    "idName": "mood",
                                     "name": "mood",
+                                    "displayName": "mood",
                                     "type": "QString",
                                     "allowedValues": [
                                         "calm provence",

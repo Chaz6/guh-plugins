@@ -82,7 +82,7 @@ DeviceManager::DeviceError DevicePluginNetworkDetector::discoverDevices(const De
     Q_UNUSED(params)
 
 
-    if (deviceClassId != networkDeviceClassId)
+    if (deviceClassId != networkDeviceDeviceClassId)
         return DeviceManager::DeviceErrorDeviceClassNotFound;
 
     if (m_discovery->isRunning()) {
@@ -119,7 +119,7 @@ void DevicePluginNetworkDetector::discoveryFinished(const QList<Host> &hosts)
     qCDebug(dcNetworkDetector()) << "Discovery finished. Found" << hosts.count() << "devices";
     QList<DeviceDescriptor> discoveredDevices;
     foreach (const Host &host, hosts) {
-        DeviceDescriptor descriptor(networkDeviceClassId, (host.hostName().isEmpty() ? host.address() : host.hostName() + "(" + host.address() + ")"), host.macAddress());
+        DeviceDescriptor descriptor(networkDeviceDeviceClassId, (host.hostName().isEmpty() ? host.address() : host.hostName() + "(" + host.address() + ")"), host.macAddress());
 
         ParamList paramList;
         Param macAddress(macAddressParamTypeId, host.macAddress());
@@ -131,7 +131,7 @@ void DevicePluginNetworkDetector::discoveryFinished(const QList<Host> &hosts)
         discoveredDevices.append(descriptor);
     }
 
-    emit devicesDiscovered(networkDeviceClassId, discoveredDevices);
+    emit devicesDiscovered(networkDeviceDeviceClassId, discoveredDevices);
 }
 
 void DevicePluginNetworkDetector::deviceReachableChanged(bool reachable)
