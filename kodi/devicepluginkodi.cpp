@@ -183,24 +183,47 @@ DeviceManager::DeviceError DevicePluginKodi::executeAction(Device *device, const
         if (action.actionTypeId() == showNotificationActionTypeId) {
             kodi->showNotification(action.param(messageParamTypeId).value().toString(), 8000, action.param(typeParamTypeId).value().toString(), action.id());
             return DeviceManager::DeviceErrorAsync;
-        } else if (action.actionTypeId() == volumeActionTypeId) {
+        } else if(action.actionTypeId() == volumeActionTypeId) {
             kodi->setVolume(action.param(volumeStateParamTypeId).value().toInt(), action.id());
             return DeviceManager::DeviceErrorAsync;
-        } else if (action.actionTypeId() == muteActionTypeId) {
+        } else if(action.actionTypeId() == muteActionTypeId) {
             kodi->setMuted(action.param(muteStateParamTypeId).value().toBool(), action.id());
             return DeviceManager::DeviceErrorAsync;
-        } else if (action.actionTypeId() == pressButtonActionTypeId) {
+        } else if(action.actionTypeId() == pressButtonActionTypeId) {
             kodi->pressButton(action.param(buttonParamTypeId).value().toString(), action.id());
             return DeviceManager::DeviceErrorAsync;
-        } else if (action.actionTypeId() == systemActionTypeId) {
+        } else if(action.actionTypeId() == systemActionTypeId) {
             kodi->systemCommand(action.param(systemCommandParamTypeId).value().toString(), action.id());
             return DeviceManager::DeviceErrorAsync;
-        } else if (action.actionTypeId() == videoLibraryActionTypeId) {
+        } else if(action.actionTypeId() == videoLibraryActionTypeId) {
             kodi->videoLibrary(action.param(videoCommandParamTypeId).value().toString(), action.id());
             return DeviceManager::DeviceErrorAsync;
-        } else if (action.actionTypeId() == audioLibraryActionTypeId) {
+        } else if(action.actionTypeId() == audioLibraryActionTypeId) {
             kodi->audioLibrary(action.param(audioCommandParamTypeId).value().toString(), action.id());
             return DeviceManager::DeviceErrorAsync;
+        } else if(action.actionTypeId() == skipBackActionTypeId) {
+            kodi->pressButton("skipprevious", action.id());
+            return DeviceManager::DeviceErrorAsync;
+        } else if(action.actionTypeId() == rewindActionTypeId) {
+            kodi->pressButton("rewind", action.id());
+            return DeviceManager::DeviceErrorAsync;
+        } else if(action.actionTypeId() == stopActionTypeId) {
+            kodi->pressButton("stop", action.id());
+            return DeviceManager::DeviceErrorAsync;
+        } else if(action.actionTypeId() == playActionTypeId) {
+            kodi->pressButton("play", action.id());
+            return DeviceManager::DeviceErrorAsync;
+        } else if(action.actionTypeId() == pauseActionTypeId) {
+            kodi->pressButton("pause", action.id());
+            return DeviceManager::DeviceErrorAsync;
+        } else if(action.actionTypeId() == fastForwardActionTypeId) {
+            kodi->pressButton("fastforward", action.id());
+            return DeviceManager::DeviceErrorAsync;
+        } else if(action.actionTypeId() == skipNextActionTypeId) {
+            kodi->pressButton("skipnext", action.id());
+            return DeviceManager::DeviceErrorAsync;
+        } else {
+            qWarning(dcKodi()) << "Unhandled action type" << action.actionTypeId();
         }
         return DeviceManager::DeviceErrorActionTypeNotFound;
     }
