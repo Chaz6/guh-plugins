@@ -8,7 +8,24 @@ Build-depends: debhelper (>= 0.0.0),
                python:any,
                qtbase5-dev,
                qtconnectivity5-dev,
+               libpcap0.8-dev,
 Standards-Version: 3.9.3
+
+
+Package: guh-plugin-amazondash
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         guh-plugins-translations,
+Description: guh.io plugin for Amazon Dash Buttons
+ The guh daemon is a plugin based IoT (Internet of Things) server. The
+ server works like a translator for devices, things and services and
+ allows them to interact.
+ With the powerful rule engine you are able to connect any device available
+ in the system and create individual scenes and behaviors for your environment.
+ .
+ This package will install the guh.io plugin for Amazon Dash Buttons
 
 
 Package: guh-plugin-avahimonitor

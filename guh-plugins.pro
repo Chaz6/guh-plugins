@@ -36,6 +36,7 @@ PLUGIN_DIRS = \
     senic               \
     multisensor         \
     gpio                \
+    amazondash          \
 
 
 CONFIG+=all
