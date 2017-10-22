@@ -1,0 +1,37 @@
+{
+    "id": "0bfa3863-f67a-41eb-a476-b629ca2263ad",
+    "name": "amazonDash",
+    "displayName": "Amazon Dash Button",
+    "vendors": [
+        {
+            "id": "894a76e5-81de-4845-bbc0-5000ec1a45df",
+            "name": "amazon",
+            "displayName": "Amazon",
+            "deviceClasses": [
+                {
+                    "id": "f5957a75-90e6-41db-a9ad-e36901f0bbd1",
+                    "name": "dashButton",
+                    "displayName": "Amazon Dash Button",
+                    "createMethods": ["discovery"],
+                    "interfaces": ["simplebutton"],
+                    "paramTypes": [
+                        {
+                            "id": "648cd06b-0c65-4fef-9dda-4041b0790c6d",
+                            "name": "macAddress",
+                            "displayName": "MAC address",
+                            "type": "QString",
+                            "inputType": "TextLine"
+                        }
+                    ],
+                    "eventTypes": [
+                        {
+                            "id": "4dd590b3-16ed-4358-af5a-5b35f73c94eb",
+                            "name": "pressed",
+                            "displayName": "button pressed"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

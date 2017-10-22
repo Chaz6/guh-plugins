@@ -34,6 +34,7 @@ PLUGIN_DIRS = \
     usbwde              \
     multisensor         \
     gpio                \
+    amazondash          \
 
 
 CONFIG+=all
