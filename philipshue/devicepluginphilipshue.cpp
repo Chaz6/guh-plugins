@@ -561,34 +561,55 @@ void DevicePluginPhilipsHue::onRemoteButtonEvent(const int &buttonCode)
 {
     HueRemote *remote = static_cast<HueRemote *>(sender());
 
+    Param param(buttonNameParamTypeId);
+    EventTypeId id;
+
+    // TODO: Legacy events should be removed eventually
     switch (buttonCode) {
     case HueRemote::OnPressed:
         emitEvent(Event(onPressedEventTypeId, m_remotes.value(remote)->id()));
+        param.setValue("ON");
+        id = pressedEventTypeId;
         break;
     case HueRemote::OnLongPressed:
         emitEvent(Event(onLongPressedEventTypeId, m_remotes.value(remote)->id()));
+        param.setValue("ON");
+        id = longPressedEventTypeId;
         break;
     case HueRemote::DimUpPressed:
         emitEvent(Event(dimUpPressedEventTypeId, m_remotes.value(remote)->id()));
+        param.setValue("DIM UP");
+        id = pressedEventTypeId;
         break;
     case HueRemote::DimUpLongPressed:
         emitEvent(Event(dimUpLongPressedEventTypeId, m_remotes.value(remote)->id()));
+        param.setValue("DIM UP");
+        id = longPressedEventTypeId;
         break;
     case HueRemote::DimDownPressed:
         emitEvent(Event(dimDownPressedEventTypeId, m_remotes.value(remote)->id()));
+        param.setValue("DIM DOWN");
+        id = pressedEventTypeId;
         break;
     case HueRemote::DimDownLongPressed:
         emitEvent(Event(dimDownLongPressedEventTypeId, m_remotes.value(remote)->id()));
+        param.setValue("DIM DOWN");
+        id = longPressedEventTypeId;
         break;
     case HueRemote::OffPressed:
         emitEvent(Event(offPressedEventTypeId, m_remotes.value(remote)->id()));
+        param.setValue("OFF");
+        id = pressedEventTypeId;
         break;
     case HueRemote::OffLongPressed:
         emitEvent(Event(offLongPressedEventTypeId, m_remotes.value(remote)->id()));
+        param.setValue("OFF");
+        id = longPressedEventTypeId;
         break;
     default:
         break;
     }
+    emitEvent(Event(id, m_remotes.value(remote)->id(), ParamList() << param));
 }
 
 void DevicePluginPhilipsHue::onTimeout()
