@@ -97,9 +97,7 @@ DeviceManager::DeviceSetupStatus DevicePluginKodi::setupDevice(Device *device)
     connect(kodi, &Kodi::actionExecuted, this, &DevicePluginKodi::onActionExecuted);
     connect(kodi, &Kodi::versionDataReceived, this, &DevicePluginKodi::versionDataReceived);
     connect(kodi, &Kodi::updateDataReceived, this, &DevicePluginKodi::onSetupFinished);
-    connect(kodi, &Kodi::onPlayerPlay, this, &DevicePluginKodi::onPlayerPlay);
-    connect(kodi, &Kodi::onPlayerPause, this, &DevicePluginKodi::onPlayerPause);
-    connect(kodi, &Kodi::onPlayerStop, this, &DevicePluginKodi::onPlayerStop);
+    connect(kodi, &Kodi::playbackStatusChanged, this, &DevicePluginKodi::onPlaybackStatusChanged);
 
     m_kodis.insert(kodi, device);
     m_asyncSetups.append(kodi);
@@ -296,24 +294,18 @@ void DevicePluginKodi::onSetupFinished(const QVariantMap &data)
     kodi->showNotification("Connected", 2000, "info", ActionId());
 }
 
-void DevicePluginKodi::onPlayerPlay()
+void DevicePluginKodi::onPlaybackStatusChanged(const QString &playbackStatus)
 {
     Kodi *kodi = static_cast<Kodi *>(sender());
     Device *device = m_kodis.value(kodi);
-    emit emitEvent(Event(onPlayerPlayEventTypeId, device->id()));
-}
-
-void DevicePluginKodi::onPlayerPause()
-{
-    Kodi *kodi = static_cast<Kodi *>(sender());
-    Device *device = m_kodis.value(kodi);
-    emit emitEvent(Event(onPlayerPauseEventTypeId, device->id()));
-}
-
-void DevicePluginKodi::onPlayerStop()
-{
-    Kodi *kodi = static_cast<Kodi *>(sender());
-    Device *device = m_kodis.value(kodi);
-    emit emitEvent(Event(onPlayerStopEventTypeId, device->id()));
+    device->setStateValue(playbackStatusStateTypeId, playbackStatus);
+    // legacy events
+    if (playbackStatus == "PLAYING") {
+        emit emitEvent(Event(onPlayerPlayEventTypeId, device->id()));
+    } else if (playbackStatus == "PAUSED") {
+        emit emitEvent(Event(onPlayerPauseEventTypeId, device->id()));
+    } else {
+        emit emitEvent(Event(onPlayerStopEventTypeId, device->id()));
+    }
 }
 
