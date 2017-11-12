@@ -40,7 +40,7 @@ DeviceManager::DeviceSetupStatus DevicePluginDaliCommander::setupDevice(Device *
             QHostAddress ipAddress = QHostAddress(device->paramValue(ipv4addressParamTypeId).toString());
             int port = device->paramValue(portParamTypeId).toInt();
             m_tcpSocket = new QTcpSocket(this);
-            m_tcpSocket->connectToHost(ipAddress,port);
+            m_tcpSocket->connectToHost(ipAddress, port);
             connect(m_tcpSocket, &QTcpSocket::connected, this, &DevicePluginDaliCommander::onTcpSocketConnected);
             connect(m_tcpSocket, &QTcpSocket::disconnected, this, &DevicePluginDaliCommander::onTcpSocketDisconnected);
             connect(m_tcpSocket, &QTcpSocket::bytesWritten, this, &DevicePluginDaliCommander::onTcpSocketBytesWritten);
