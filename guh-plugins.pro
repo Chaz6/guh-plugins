@@ -36,6 +36,7 @@ PLUGIN_DIRS = \
     senic               \
     multisensor         \
     gpio                \
+    simulation          \
 
 
 CONFIG+=all
